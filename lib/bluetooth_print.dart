@@ -20,10 +20,8 @@ class BluetoothPrint {
       StreamController.broadcast();
 
   BluetoothPrint._() {
-    _channel.setMethodCallHandler((MethodCall call) {
-      _methodStreamController.add(call);
-      return;
-    } as Future<dynamic> Function(MethodCall)?);
+    _channel.setMethodCallHandler((MethodCall call) async => 
+      _methodStreamController.add(call));
   }
 
   static BluetoothPrint _instance = new BluetoothPrint._();
